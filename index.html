@@ -1,1 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fizemos Corretora de Seguros | Planos de Saúde</title>
+<meta name="description" content="Corretora de planos de saúde transparente: quem protegeu a obra, também protege a saúde da sua família. Fale com a Fizemos.">
+<link rel="icon" href="Logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0D0C0A;
+    --bg-band: #151210;
+    --panel: #1B1712;
+    --ink: #F2ECDD;
+    --ink-soft: #B4A67F;
+    --gold: #D8AC44;
+    --gold-bright: #ECC66B;
+    --gold-line: rgba(216, 172, 68, 0.28);
+    --gold-line-soft: rgba(216, 172, 68, 0.14);
+    --max: 1120px;
+    --gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
 
+  *, *::before, *::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *, *::before, *::after{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3{
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.12;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img{ max-width: 100%; display: block; }
+
+  a:focus-visible,
+  button:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gap);
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(13, 12, 10, 0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--gold-line-soft);
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.9rem;
+    gap: 1rem;
+  }
+
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+  }
+
+  .brand img{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--gold-line);
+  }
+
+  .brand-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .brand-name span{ color: var(--gold); }
+
+  .nav-links{
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a{
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+
+  .nav-links a:hover{ color: var(--ink); }
+
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+
+  .btn-primary{
+    background: var(--gold);
+    color: var(--bg);
+  }
+  .btn-primary:hover{ background: var(--gold-bright); }
+
+  .btn-ghost{
+    border-color: var(--ink-soft);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .nav-toggle{
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding-block: clamp(3rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+  .hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, var(--gold-line-soft) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, var(--gold-line-soft) 0 1px, transparent 1px 48px);
+    pointer-events: none;
+  }
+
+  .corner{
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--gold-line);
+  }
+  .corner.tl{ top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .corner.tr{ top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .corner.bl{ bottom: 18px; left: 18px; border-right: none; border-top: none; }
+  .corner.br{ bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+  .hero-inner{
+    position: relative;
+    z-index: 1;
+  }
+
+  .titleblock{
+    display: inline-grid;
+    grid-auto-flow: column;
+    gap: 1.5rem;
+    background: var(--panel);
+    border: 1px solid var(--gold-line);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 2.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .titleblock div{ display: flex; flex-direction: column; gap: 0.15rem; }
+  .titleblock .tb-key{
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+  }
+  .titleblock .tb-val{ font-size: 0.85rem; font-weight: 600; color: var(--gold-bright); }
+
+  .hero h1{
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    max-width: 15ch;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub{
+    margin-top: 1.5rem;
+    max-width: 46ch;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+  }
+
+  .dimension{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2.5rem 0 2rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+  .dimension .tick{ font-size: 0.9rem; color: var(--gold-line); }
+  .dimension .rule{
+    flex: 1;
+    height: 1px;
+    background: var(--gold-line);
+    position: relative;
+  }
+  .dimension .rule::before, .dimension .rule::after{
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 1px;
+    height: 9px;
+    background: var(--gold-line);
+  }
+  .dimension .rule::before{ left: 0; }
+  .dimension .rule::after{ right: 0; }
+  .dimension .dim-label{
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    color: var(--gold);
+  }
+
+  .hero-ctas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding-block: clamp(3rem, 7vw, 5.5rem); }
+  .band{ background: var(--bg-band); border-top: 1px solid var(--gold-line-soft); border-bottom: 1px solid var(--gold-line-soft); }
+
+  .section-head{
+    max-width: 60ch;
+    margin-bottom: 2.75rem;
+  }
+  .section-head h2{ font-size: clamp(1.6rem, 3.4vw, 2.2rem); }
+  .section-head p{ margin-top: 0.9rem; color: var(--ink-soft); font-size: 1.05rem; }
+
+  /* ---------- POR QUE A FIZEMOS ---------- */
+  .why-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .why-photo{
+    border: 1px solid var(--gold-line);
+    background: var(--panel);
+    padding: 0.6rem;
+  }
+  .why-photo img{ width: 100%; object-fit: cover; }
+
+  .why-list{
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .why-list li{
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+  .why-list .mark{
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gold-line-soft);
+    border: 1px solid var(--gold-line);
+    color: var(--gold-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .why-list strong{ display: block; font-size: 1rem; color: var(--ink); }
+  .why-list span{ color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- PLANOS ---------- */
+  .plans-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+  .plan-card{
+    background: var(--panel);
+    border: 1px solid var(--gold-line);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .plan-card .tag{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+  .plan-card h3{ font-size: 1.15rem; }
+  .plan-card p{ color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .step{
+    border-top: 2px solid var(--gold-line);
+    padding-top: 1.1rem;
+  }
+  .step .num{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .step h3{ font-size: 1.02rem; margin-top: 0.4rem; }
+  .step p{ color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.35rem; }
+
+  /* ---------- PONTE OBRA / SAUDE ---------- */
+  .bridge{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--gold-line);
+  }
+  .bridge > div{
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: var(--panel);
+  }
+  .bridge .saude{
+    background: linear-gradient(var(--gold-line-soft), var(--gold-line-soft)), var(--panel);
+    border-left: 1px solid var(--gold-line);
+  }
+  .bridge h3{ font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--gold-bright); }
+  .bridge p{ color: var(--ink-soft); font-size: 0.95rem; }
+  .bridge-note{
+    margin-top: 1.75rem;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 68ch;
+  }
+  .bridge-note a{ color: var(--gold-bright); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background: var(--gold);
+    color: var(--bg);
+    text-align: left;
+  }
+  .cta-final h2{ color: var(--bg); font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 20ch; }
+  .cta-final p{ color: #3A2E0F; margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
+  .cta-final .hero-ctas{ margin-top: 2rem; }
+  .cta-final .btn-primary{ background: var(--bg); color: var(--gold-bright); }
+  .cta-final .btn-primary:hover{ background: #211D18; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding-block: 2.5rem; border-top: 1px solid var(--gold-line-soft); }
+  .footer-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .footer-brand{ display: flex; align-items: center; gap: 0.6rem; }
+  .footer-brand img{ height: 28px; width: 28px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-line); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .why-grid{ grid-template-columns: 1fr; }
+    .why-photo{ order: -1; max-width: 360px; }
+    .steps{ grid-template-columns: repeat(2, 1fr); }
+    .bridge{ grid-template-columns: 1fr; }
+    .bridge .saude{ border-left: none; border-top: 1px solid var(--gold-line); }
+  }
+
+  @media (max-width: 680px){
+    .nav-links{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--gold-line-soft);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem var(--gap);
+      gap: 1rem;
+      display: none;
+    }
+    .nav-links.open{ display: flex; }
+    .nav-links .btn{ width: 100%; justify-content: center; }
+    .nav-toggle{ display: inline-flex; }
+    .steps{ grid-template-columns: 1fr; }
+    .titleblock{ grid-auto-flow: row; gap: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
+      <span class="brand-name">Fizemo<span>$</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#obra-saude">Obra &amp; saúde</a></li>
+      <li><a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+    <div class="wrap hero-inner">
+      <div class="titleblock">
+        <div><span class="tb-key">Obra</span><span class="tb-val">Sua saúde</span></div>
+        <div><span class="tb-key">Responsável</span><span class="tb-val">Você e sua família</span></div>
+        <div><span class="tb-key">Validade</span><span class="tb-val">Sem data pra vencer</span></div>
+      </div>
+
+      <h1>Você protegeu a obra. E a sua saúde?</h1>
+      <p class="hero-sub">A Fizemos nasceu entre plantas, medidas e reformas — e hoje cuida de outro tipo de estrutura: a da sua família. Somos corretora de planos de saúde e explicamos exatamente o que está e o que não está coberto, antes de você assinar qualquer coisa.</p>
+
+      <div class="dimension">
+        <span class="tick">|</span>
+        <span class="rule"></span>
+        <span class="dim-label">Cobertura explicada do início ao fim</span>
+        <span class="rule"></span>
+        <span class="tick">|</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a href="#planos" class="btn btn-ghost">Ver tipos de plano</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE A FIZEMOS -->
+  <section id="por-que">
+    <div class="wrap why-grid">
+      <div>
+        <h2>Antes de vender plano de saúde, eu trabalhei dentro de uma operadora</h2>
+        <p style="margin-top:1.1rem; color:var(--ink-soft); font-size:1.05rem;">Foi ali que vi de perto como contratos mal explicados viram dor de cabeça na hora em que a família mais precisa. A Fizemos existe pra fazer diferente: menos letra miúda, mais conversa direta sobre o que cada plano cobre de verdade.</p>
+
+        <ul class="why-list">
+          <li>
+            <span class="mark">1</span>
+            <div><strong>Experiência do outro lado do balcão</strong><span>Já fui operador(a) de plano de saúde antes de virar corretor(a) — conheço os bastidores.</span></div>
+          </li>
+          <li>
+            <span class="mark">2</span>
+            <div><strong>Cobertura explicada sem letra miúda</strong><span>Você sabe exatamente o que está e o que não está incluso antes de fechar.</span></div>
+          </li>
+          <li>
+            <span class="mark">3</span>
+            <div><strong>Atendimento direto, sem robô</strong><span>Fala comigo por DM ou WhatsApp, do primeiro contato até o pós-venda.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="why-photo">
+        <img src="CORRETORA.png" alt="Corretora Fizemos">
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Um plano de saúde pra cada estrutura de família</h2>
+        <p>Cada categoria tem regras diferentes de carência, rede e valor — na conversa a gente descobre junto qual encaixa no seu caso.</p>
+      </div>
+
+      <div class="plans-grid">
+        <div class="plan-card">
+          <span class="tag">Individual</span>
+          <h3>Plano individual</h3>
+          <p>Pra quem contrata sozinho, sem depender de uma empresa ou de um grupo.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">Família</span>
+          <h3>Plano familiar</h3>
+          <p>Cobertura pra você e seus dependentes dentro de um único contrato.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">PME</span>
+          <h3>Plano empresarial</h3>
+          <p>Pra pequenas e médias empresas que querem oferecer saúde ao time.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">Adesão</span>
+          <h3>Plano por adesão</h3>
+          <p>Contratado através de sindicatos e associações, com condições próprias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Como funciona a partir daqui</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Você chama</h3>
+          <p>Manda mensagem por DM ou WhatsApp contando sua situação.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>A gente entende</h3>
+          <p>Levantamos idade, dependentes, região e o que já tentaram antes.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Você compara</h3>
+          <p>Apresento as opções que fazem sentido, com cobertura explicada em detalhe.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <h3>Você decide</h3>
+          <p>Sem pressão. Fechamos quando estiver claro pra você, não antes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBRA X SAUDE -->
+  <section id="obra-saude" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>O mesmo cuidado que você teve com a obra</h2>
+      </div>
+
+      <div class="bridge">
+        <div class="obra">
+          <h3>Na reforma</h3>
+          <p>Medir antes de cortar. Conferir o orçamento linha por linha. Não assinar nada sem entender o que está incluso.</p>
+        </div>
+        <div class="saude">
+          <h3>Na saúde</h3>
+          <p>Entender a carência antes de contratar. Saber exatamente o que o plano cobre. Não assinar nada sem entender o que está incluso.</p>
+        </div>
+      </div>
+
+      <p class="bridge-note">Esse jeito de fazer as coisas vem lá do canal <a href="#" rel="noopener">Fizemo$</a>, onde a gente já mostra obra e reforma sendo tocadas sem enrolação. A corretora nasceu da mesma lógica: se você protege o que construiu, faz sentido proteger quem mora dentro.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <h2>Vamos conversar sobre o plano certo pra sua família?</h2>
+      <p>Sem formulário, sem letra miúda. É uma conversa direta comigo, pelo WhatsApp ou por DM.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
+      <span>Corretora Fizemo$</span>
+    </div>
+    <span>corretorafizemos.com</span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>
