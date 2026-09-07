@@ -1,875 +1,593 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Fizemos$ — Corretora de seguros, saúde e consórcios. Compare opções e escolha com segurança." />
-  <title>Fizemos$ | Corretora de Seguros, Saúde e Consórcios</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fizemos Corretora de Seguros | Planos de Saúde</title>
+<meta name="description" content="Corretora de seguros e consórcios com transparência: confiança e segurança para você decidir com clareza.">
+<link rel="icon" href="Logo.jpeg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Corretora Fizemos">
+<meta property="og:description" content="Seguros e consórcios com transparência, confiança e segurança para você decidir com clareza.">
+<meta property="og:image" content="https://corretorafizemos.com/Logo.jpeg">
+<meta property="og:url" content="https://corretorafizemos.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --bg-band: #F6F3EC;
+    --panel: #FBFAF6;
+    --ink: #1D1912;
+    --ink-soft: #5A5142;
+    --gold: #96700A;
+    --gold-bright: #C99A3B;
+    --gold-deep: #6E5108;
+    --gold-line: rgba(150, 112, 10, 0.32);
+    --gold-line-soft: rgba(150, 112, 10, 0.14);
+    --max: 1120px;
+    --gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  *, *::before, *::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
 
-  <style>
-    :root{
-      --black:#12120f;
-      --black-2:#191814;
-      --gold:#c99a2e;
-      --gold-light:#e5bd62;
-      --cream:#f7f4eb;
-      --white:#fff;
-      --text:#191814;
-      --muted:#625e55;
-      --line:#e7dfcc;
-      --max:1280px;
-      --radius:10px;
-      --shadow:0 18px 50px rgba(18,18,15,.10);
-    }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *, *::before, *::after{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:"Manrope",Arial,sans-serif;
-      color:var(--text);
-      background:var(--white);
-      -webkit-font-smoothing:antialiased;
-    }
-    a{text-decoration:none;color:inherit}
-    button{font:inherit}
-    img{max-width:100%;display:block}
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    .container{
-      width:min(calc(100% - 48px),var(--max));
-      margin:auto;
-    }
+  h1, h2, h3{
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.12;
+    margin: 0;
+    color: var(--ink);
+  }
 
-    /* HEADER */
-    header{
-      position:fixed;
-      inset:0 0 auto;
-      z-index:100;
-      height:76px;
-      background:rgba(18,18,15,.96);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      backdrop-filter:blur(12px);
-    }
-    .nav{
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:30px;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:#fff;
-      font-weight:800;
-      font-size:20px;
-      letter-spacing:-.04em;
-      white-space:nowrap;
-    }
-    .brand img{
-      width:44px;height:44px;
-      border-radius:50%;
-      object-fit:cover;
-      border:1px solid var(--gold);
-    }
-    .brand span::after{content:"$";color:var(--gold)}
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:34px;
-      color:#eee8dc;
-      font-size:13px;
-      font-weight:600;
-    }
-    .menu a{opacity:.88;transition:.2s}
-    .menu a:hover{color:var(--gold-light);opacity:1}
-    .nav-cta,.gold-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
-      min-height:44px;
-      padding:0 21px;
-      border-radius:999px;
-      background:var(--gold-light);
-      color:#17140d;
-      font-weight:800;
-      font-size:13px;
-      border:0;
-      cursor:pointer;
-      transition:transform .2s,filter .2s;
-    }
-    .nav-cta:hover,.gold-btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
-    .mobile-menu{display:none;background:none;border:0;color:#fff;font-size:27px}
+  p{ margin: 0; }
+  a{ color: inherit; }
+  img{ max-width: 100%; display: block; }
 
-    /* HERO */
-    .hero{
-      min-height:640px;
-      padding-top:76px;
-      position:relative;
-      display:flex;
-      align-items:stretch;
-      overflow:hidden;
-      background:#111;
-    }
-    .hero-bg{
-      position:absolute;inset:0;
-      width:100%;height:100%;
-      object-fit:cover;
-      object-position:center;
-    }
-    .hero-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(90deg,rgba(10,10,8,.96) 0%,rgba(10,10,8,.84) 35%,rgba(10,10,8,.20) 66%,rgba(10,10,8,.08) 100%);
-    }
-    .hero-content{
-      position:relative;
-      z-index:2;
-      width:min(calc(100% - 48px),var(--max));
-      margin:auto;
-      display:flex;
-      align-items:center;
-      min-height:564px;
-    }
-    .hero-copy{max-width:570px;color:#fff;padding:55px 0}
-    .eyebrow{
-      color:var(--gold-light);
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.17em;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-    h1{
-      margin:0;
-      font-size:clamp(42px,5.1vw,72px);
-      line-height:1.02;
-      letter-spacing:-.055em;
-      font-weight:800;
-    }
-    h1 span{color:var(--gold-light)}
-    .hero-copy p{
-      max-width:510px;
-      margin:20px 0 28px;
-      color:#eeeae1;
-      font-size:17px;
-      line-height:1.65;
-    }
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .outline-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:46px;
-      padding:0 23px;
-      border:1px solid rgba(255,255,255,.65);
-      border-radius:999px;
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      transition:.2s;
-    }
-    .outline-btn:hover{background:#fff;color:#17140d}
-    .arrow{font-size:16px}
+  a:focus-visible,
+  button:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
 
-    /* COMMON */
-    section{padding:82px 0}
-    .section-kicker{
-      color:#a6770c;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-    .section-title{
-      margin:0;
-      font-size:clamp(30px,3.4vw,47px);
-      line-height:1.06;
-      letter-spacing:-.045em;
-      font-weight:800;
-    }
-    .section-subtitle{
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.65;
-      margin:12px 0 0;
-    }
+  .wrap{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gap);
+  }
 
-    /* CATEGORIES */
-    .categories{background:#fff}
-    .category-grid{
-      margin-top:32px;
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-    .category{
-      border:1px solid var(--line);
-      padding:27px 24px 22px;
-      min-height:198px;
-      position:relative;
-      transition:.25s;
-      background:#fff;
-    }
-    .category:hover{
-      transform:translateY(-5px);
-      box-shadow:var(--shadow);
-      border-color:#d6bb7a;
-    }
-    .category-icon{
-      width:38px;height:38px;
-      color:#a87808;
-      margin-bottom:15px;
-    }
-    .category h3{font-size:17px;margin:0 0 7px;letter-spacing:-.02em}
-    .category p{font-size:13px;line-height:1.55;color:var(--muted);margin:0;max-width:210px}
-    .category-link{
-      position:absolute;bottom:20px;left:24px;
-      color:#936807;font-size:11px;font-weight:800;
-    }
+  /* ---------- HEADER ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--gold-line-soft);
+  }
 
-    /* HOW */
-    .how{background:var(--cream)}
-    .how-layout{
-      display:grid;
-      grid-template-columns:.9fr 1.5fr;
-      gap:60px;
-      align-items:center;
-    }
-    .how-lead p{max-width:360px}
-    .how-lead .gold-btn{margin-top:24px}
-    .steps{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      border-top:1px solid #d9cfb8;
-    }
-    .step{
-      padding:27px 22px 10px;
-      min-height:220px;
-      border-right:1px solid #ddd5c2;
-      position:relative;
-    }
-    .step:last-child{border-right:0}
-    .step-number{
-      color:#a87808;
-      font-size:12px;
-      font-weight:800;
-      margin-bottom:22px;
-    }
-    .step-icon{font-size:27px;margin-bottom:14px}
-    .step h3{font-size:14px;margin:0 0 8px}
-    .step p{font-size:12px;line-height:1.55;color:var(--muted);margin:0}
+  .nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.9rem;
+    gap: 1rem;
+  }
 
-    /* DIFFERENTIALS */
-    .dark-section{
-      background:var(--black);
-      color:#fff;
-      position:relative;
-      overflow:hidden;
-    }
-    .dark-grid{
-      display:grid;
-      grid-template-columns:.9fr 1.25fr .9fr;
-      min-height:390px;
-      align-items:stretch;
-    }
-    .dark-copy{padding:65px 40px 65px 0}
-    .dark-copy .section-title{font-size:37px}
-    .dark-copy p{color:#c8c4ba;line-height:1.65;font-size:14px;max-width:430px}
-    .benefits{
-      padding:65px 38px;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:0;
-    }
-    .benefit{
-      padding:0 24px 30px 0;
-      margin-bottom:30px;
-      border-right:1px solid rgba(255,255,255,.13);
-    }
-    .benefit:nth-child(2n){padding-left:24px;padding-right:0;border-right:0}
-    .benefit:nth-child(n+3){padding-top:25px;border-top:1px solid rgba(255,255,255,.13)}
-    .benefit-icon{color:var(--gold-light);font-size:24px;margin-bottom:12px}
-    .benefit h3{font-size:12px;margin:0 0 6px}
-    .benefit p{font-size:11px;line-height:1.55;color:#bcb8ae;margin:0}
-    .dark-image{
-      min-height:390px;
-      position:relative;
-    }
-    .dark-image img{
-      width:100%;height:100%;object-fit:cover;
-      filter:brightness(.82);
-    }
-    .dark-image:after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(90deg,var(--black) 0%,transparent 35%);
-    }
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+  }
 
-    /* PROFILES */
-    .profiles{background:#fff}
-    .profile-layout{
-      display:grid;
-      grid-template-columns:1fr 2.2fr;
-      gap:35px;
-      align-items:start;
-    }
-    .profile-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
-    }
-    .profile-card{
-      min-height:245px;
-      border-radius:7px;
-      overflow:hidden;
-      position:relative;
-      background:#222;
-    }
-    .profile-card .profile-bg{
-      position:absolute;inset:0;
-      width:100%;height:100%;object-fit:cover;
-    }
-    .profile-card:after{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(transparent 35%,rgba(0,0,0,.9));
-    }
-    .profile-content{
-      position:absolute;z-index:2;left:16px;right:16px;bottom:16px;color:#fff;
-    }
-    .profile-content h3{font-size:15px;margin:0 0 6px}
-    .profile-content p{font-size:10px;line-height:1.4;color:#e4e0d7;margin:0}
-    .profile-content .circle-arrow{
-      position:absolute;right:0;bottom:0;
-      width:28px;height:28px;border-radius:50%;
-      display:grid;place-items:center;background:var(--gold-light);color:#17140d;font-weight:800;
-    }
+  .brand img{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--gold-line);
+  }
 
-    /* ABOUT */
-    .about{
-      background:#fff;
-      padding-top:35px;
-      padding-bottom:35px;
-    }
-    .about-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:0;
-      align-items:stretch;
-      background:var(--black);
-      color:#fff;
-      overflow:hidden;
-    }
-    .about-copy{padding:55px}
-    .about-copy p{color:#c7c2b8;font-size:14px;line-height:1.75;max-width:500px}
-    .about-image img{width:100%;height:100%;min-height:350px;object-fit:cover}
+  .brand-name{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
 
-    /* TESTIMONIALS */
-    .testimonials{background:var(--cream)}
-    .testimonial-layout{
-      display:grid;
-      grid-template-columns:.75fr 1.8fr;
-      gap:45px;
-      align-items:start;
-    }
-    .quote-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-    }
-    .quote{
-      background:#fff;
-      border:1px solid var(--line);
-      padding:22px;
-      min-height:190px;
-    }
-    .quote p{font-size:12px;line-height:1.6;margin:0 0 24px;color:#454139}
-    .person{display:flex;align-items:center;gap:10px}
-    .avatar{
-      width:32px;height:32px;border-radius:50%;
-      display:grid;place-items:center;background:#e9e0cc;color:#88620a;font-weight:800;font-size:11px;
-    }
-    .person strong{display:block;font-size:11px}
-    .person span{font-size:9px;color:#8b857a}
+  .brand-name span{ color: var(--gold); }
 
-    /* FAQ */
-    .faq{background:#fff}
-    .faq-layout{
-      display:grid;
-      grid-template-columns:.75fr 1.8fr;
-      gap:55px;
-    }
-    .faq-list{border-top:1px solid var(--line)}
-    details{border-bottom:1px solid var(--line)}
-    summary{
-      cursor:pointer;
-      list-style:none;
-      padding:17px 4px;
-      font-size:12px;
-      font-weight:700;
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-    }
-    summary::-webkit-details-marker{display:none}
-    summary:after{content:"+";font-size:18px;font-weight:400;color:#8e6a19}
-    details[open] summary:after{content:"−"}
-    details p{font-size:12px;line-height:1.65;color:var(--muted);margin:0;padding:0 4px 18px}
+  .nav-links{
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* FINAL CTA */
-    .final-cta{
-      background:var(--black);
-      color:#fff;
-      position:relative;
-      overflow:hidden;
-    }
-    .final-cta:after{
-      content:"";
-      position:absolute;
-      width:500px;height:500px;
-      right:-170px;top:-220px;
-      border:1px solid rgba(201,154,46,.65);
-      border-radius:50%;
-    }
-    .cta-layout{
-      min-height:300px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:40px;
-      position:relative;z-index:2;
-    }
-    .final-cta .section-title{font-size:39px}
-    .final-cta p{color:#c7c2b8;max-width:550px;font-size:14px}
-    .cta-brand{
-      display:flex;align-items:center;gap:18px;
-      font-size:22px;font-weight:800;
-      white-space:nowrap;
-    }
-    .cta-brand img{width:86px;height:86px;border-radius:50%;border:1px solid var(--gold)}
+  .nav-links a{
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
 
-    /* FOOTER */
-    footer{
-      background:var(--black);
-      border-top:1px solid rgba(255,255,255,.12);
-      color:#b9b5ac;
-      padding:32px 0;
-    }
-    .footer-row{
-      display:flex;justify-content:space-between;gap:30px;align-items:center;
-    }
-    .footer-brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800}
-    .footer-brand img{width:46px;height:46px;border-radius:50%;border:1px solid var(--gold)}
-    .footer-brand small{display:block;color:#8e8a82;font-size:9px;font-weight:500;margin-top:3px}
-    .footer-links{display:flex;gap:25px;font-size:10px}
-    .footer-links a:hover{color:#fff}
-    .copyright{font-size:9px;color:#77736b}
+  .nav-links a:hover{ color: var(--ink); }
 
-    /* FLOATING WHATSAPP */
-    .floating{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      z-index:90;
-      width:56px;height:56px;
-      border-radius:50%;
-      background:var(--gold-light);
-      color:#17140d;
-      display:grid;place-items:center;
-      font-weight:900;
-      box-shadow:0 12px 30px rgba(0,0,0,.25);
-      transition:.2s;
-    }
-    .floating:hover{transform:translateY(-3px) scale(1.03)}
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
 
-    /* RESPONSIVE */
-    @media(max-width:1050px){
-      .menu{gap:20px}
-      .category-grid{grid-template-columns:repeat(2,1fr)}
-      .how-layout{grid-template-columns:1fr;gap:35px}
-      .dark-grid{grid-template-columns:1fr 1fr}
-      .dark-image{display:none}
-      .profile-layout,.testimonial-layout,.faq-layout{grid-template-columns:1fr;gap:30px}
-      .profile-grid{grid-template-columns:repeat(4,1fr)}
-    }
+  .btn-primary{
+    background: var(--ink);
+    color: #FFFFFF;
+  }
+  .btn-primary:hover{ background: var(--gold-deep); }
 
-    @media(max-width:760px){
-      .container,.hero-content{width:min(calc(100% - 30px),var(--max))}
-      header{height:68px}
-      .nav{gap:12px}
-      .brand{font-size:17px}
-      .brand img{width:38px;height:38px}
-      .menu,.nav-cta{display:none}
-      .mobile-menu{display:block}
-      .hero{padding-top:68px;min-height:650px}
-      .hero-content{min-height:582px;align-items:flex-end}
-      .hero-overlay{background:linear-gradient(180deg,rgba(10,10,8,.38),rgba(10,10,8,.94) 67%)}
-      .hero-copy{padding:45px 0}
-      h1{font-size:43px}
-      .hero-copy p{font-size:15px}
-      section{padding:62px 0}
-      .category-grid{grid-template-columns:1fr}
-      .steps{grid-template-columns:1fr 1fr}
-      .step{border-bottom:1px solid #ddd5c2}
-      .step:nth-child(2){border-right:0}
-      .dark-grid{grid-template-columns:1fr}
-      .dark-copy{padding:55px 0 20px}
-      .benefits{padding:35px 0 55px}
-      .profile-grid{grid-template-columns:1fr 1fr}
-      .profile-card{min-height:220px}
-      .about-grid{grid-template-columns:1fr}
-      .about-copy{padding:40px 28px}
-      .about-image img{min-height:280px}
-      .quote-grid{grid-template-columns:1fr}
-      .cta-layout{display:block;padding:15px 0 20px}
-      .cta-brand{margin-top:45px}
-      .footer-row{flex-direction:column;align-items:flex-start}
-      .footer-links{flex-wrap:wrap}
-      .floating{width:50px;height:50px;right:15px;bottom:15px}
-    }
+  .btn-ghost{
+    border-color: var(--gold-line);
+    color: var(--ink);
+  }
+  .btn-ghost:hover{ background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
 
-    @media(max-width:460px){
-      .actions{flex-direction:column;align-items:stretch}
-      .actions a,.actions button{width:100%}
-      .steps{grid-template-columns:1fr}
-      .step{border-right:0}
-      .profile-grid{grid-template-columns:1fr}
-      .profile-card{min-height:245px}
+  .nav-toggle{
+    display: none;
+    background: none;
+    border: 1px solid var(--gold-line);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding-block: clamp(3rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+  .corner{
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--gold-line);
+  }
+  .corner.tl{ top: 18px; left: 18px; border-right: none; border-bottom: none; }
+  .corner.tr{ top: 18px; right: 18px; border-left: none; border-bottom: none; }
+  .corner.bl{ bottom: 18px; left: 18px; border-right: none; border-top: none; }
+  .corner.br{ bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+  .hero-inner{
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1{
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    max-width: 15ch;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-sub{
+    margin-top: 1.5rem;
+    max-width: 50ch;
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+  }
+
+  .dimension{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2.5rem 0 2rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+  }
+  .dimension .tick{ font-size: 0.9rem; color: var(--gold-line); }
+  .dimension .rule{
+    flex: 1;
+    height: 1px;
+    background: var(--gold-line);
+    position: relative;
+  }
+  .dimension .rule::before, .dimension .rule::after{
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 1px;
+    height: 9px;
+    background: var(--gold-line);
+  }
+  .dimension .rule::before{ left: 0; }
+  .dimension .rule::after{ right: 0; }
+  .dimension .dim-label{
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    color: var(--gold);
+  }
+
+  .hero-ctas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding-block: clamp(3rem, 7vw, 5.5rem); }
+  .band{ background: var(--bg-band); border-top: 1px solid var(--gold-line-soft); border-bottom: 1px solid var(--gold-line-soft); }
+
+  .section-head{
+    max-width: 60ch;
+    margin-bottom: 2.75rem;
+  }
+  .section-head h2{ font-size: clamp(1.6rem, 3.4vw, 2.2rem); }
+  .section-head p{ margin-top: 0.9rem; color: var(--ink-soft); font-size: 1.05rem; }
+
+  /* ---------- POR QUE A FIZEMOS ---------- */
+  .why-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .why-grid h2{ font-size: clamp(1.5rem, 3vw, 2rem); max-width: 22ch; }
+
+  .why-photo{
+    border: 1px solid var(--gold-line);
+    background: var(--panel);
+    padding: 0.6rem;
+  }
+  .why-photo img{ width: 100%; object-fit: cover; }
+
+  .why-list{
+    list-style: none;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .why-list li{
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+  .why-list .mark{
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gold-line-soft);
+    border: 1px solid var(--gold-line);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .why-list strong{ display: block; font-size: 1rem; color: var(--ink); }
+  .why-list span{ color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- PLANOS ---------- */
+  .plans-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+  .plan-card{
+    background: var(--panel);
+    border: 1px solid var(--gold-line);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .plan-card .tag{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+  .plan-card h3{ font-size: 1.15rem; }
+  .plan-card p{ color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .step{
+    border-top: 2px solid var(--gold-line);
+    padding-top: 1.1rem;
+  }
+  .step .num{
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .step h3{ font-size: 1.02rem; margin-top: 0.4rem; }
+  .step p{ color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.35rem; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    position: relative;
+    background-color: var(--ink);
+    background-image: linear-gradient(180deg, rgba(13,12,10,0.6), rgba(13,12,10,0.82)), url('Lobby_corporativo_com_logo_dourado.png');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+    text-align: left;
+  }
+  .cta-final h2{ color: #FFFFFF; font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 22ch; }
+  .cta-final p{ color: rgba(255,255,255,0.82); margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
+  .cta-final .hero-ctas{ margin-top: 2rem; }
+  .cta-final .btn-primary{ background: var(--gold-bright); color: var(--ink); }
+  .cta-final .btn-primary:hover{ background: #FFFFFF; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding-block: 2.5rem; border-top: 1px solid var(--gold-line-soft); }
+  .footer-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .footer-brand{ display: flex; align-items: center; gap: 0.6rem; }
+  .footer-brand img{ height: 28px; width: 28px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-line); }
+  .footer-note{
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .footer-note a{ color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .why-grid{ grid-template-columns: 1fr; }
+    .why-photo{ order: -1; max-width: 360px; }
+    .steps{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 680px){
+    .nav-links{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--gold-line-soft);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem var(--gap);
+      gap: 1rem;
+      display: none;
     }
-  </style>
+    .nav-links.open{ display: flex; }
+    .nav-links .btn{ width: 100%; justify-content: center; }
+    .nav-toggle{ display: inline-flex; }
+    .steps{ grid-template-columns: 1fr; }
+  }
+</style>
 </head>
-
 <body>
+
 <header>
-  <div class="container nav">
-    <a href="#inicio" class="brand" aria-label="Fizemos$ início">
-      <img src="assets/logo.jpg" alt="Logo Fizemos$">
-      <span>Fizemos</span>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
+      <span class="brand-name">Fizemo<span>$</span></span>
     </a>
-
-    <nav class="menu" aria-label="Navegação principal">
-      <a href="#inicio">Início</a>
-      <a href="#planos">Planos</a>
-      <a href="#empresas">Para empresas</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#sobre">Sobre nós</a>
-    </nav>
-
-    <a class="nav-cta" href="#contato">◉ &nbsp; Falar com um especialista</a>
-    <button class="mobile-menu" aria-label="Abrir menu" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#como-funciona">Sobre nós</a></li>
+      <li><a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+    </ul>
   </div>
 </header>
 
-<main>
-  <section class="hero" id="inicio">
-    <img class="hero-bg" src="assets/lobby.png" alt="Lobby corporativo da Corretora Fizemos$">
-    <div class="hero-overlay"></div>
+<main id="top">
 
-    <div class="hero-content">
-      <div class="hero-copy">
-        <div class="eyebrow">Corretora de seguros, saúde e consórcios</div>
-        <h1>O plano certo começa com uma <span>boa conversa.</span></h1>
-        <p>Saúde, seguros e benefícios para você, sua família ou sua empresa — com opções explicadas de forma simples, transparente e sem complicação.</p>
-        <div class="actions">
-          <a class="gold-btn" href="#contato">◉ &nbsp; Falar com um especialista</a>
-          <a class="outline-btn" href="#planos">Ver opções de planos <span class="arrow">→</span></a>
+  <!-- HERO -->
+  <section class="hero">
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
+    <div class="wrap hero-inner">
+      <h1>Você protegeu a obra. E a sua saúde?</h1>
+      <p class="hero-sub">A Fizemos Corretora nasceu da nossa experiência no mercado de seguros e consórcios, com um propósito simples: oferecer aos nossos clientes algo que vai muito além de um produto — confiança, transparência e segurança para tomar as melhores decisões.</p>
+
+      <div class="dimension">
+        <span class="tick">|</span>
+        <span class="rule"></span>
+        <span class="dim-label">Cobertura explicada do início ao fim</span>
+        <span class="rule"></span>
+        <span class="tick">|</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a href="#planos" class="btn btn-ghost">Ver tipos de plano</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE A FIZEMOS -->
+  <section id="por-que">
+    <div class="wrap why-grid">
+      <div>
+        <h2>Antes de vender plano de saúde, nós trabalhamos dentro de três das maiores operadoras do ramo de seguros e consórcio do Brasil.</h2>
+
+        <ul class="why-list">
+          <li>
+            <span class="mark">1</span>
+            <div><strong>Garantimos a segurança e a tranquilidade</strong><span>que você precisa para contratar seu seguro ou consórcio sem surpresas no futuro.</span></div>
+          </li>
+          <li>
+            <span class="mark">2</span>
+            <div><strong>Cobertura explicada sem letra miúda</strong><span>Você sabe exatamente o que está e o que não está incluso antes de fechar.</span></div>
+          </li>
+          <li>
+            <span class="mark">3</span>
+            <div><strong>Atendimento direto, sem robô</strong><span>Fala comigo por WhatsApp, do primeiro contato até o pós-venda.</span></div>
+          </li>
+          <li>
+            <span class="mark">4</span>
+            <div><strong>Atendimento exclusivo</strong><span>com influência para sua empresa.</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="why-photo">
+        <img src="CORRETORA.png" alt="Corretora Fizemos">
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section id="planos" class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Um plano de saúde pra cada estrutura de família</h2>
+        <p>Cada categoria tem regras diferentes de carência, rede e valor — na conversa a gente descobre junto qual encaixa no seu caso.</p>
+      </div>
+
+      <div class="plans-grid">
+        <div class="plan-card">
+          <span class="tag">Individual</span>
+          <h3>Plano individual</h3>
+          <p>Pra quem contrata sozinho, sem depender de uma empresa ou de um grupo.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">Família</span>
+          <h3>Plano familiar</h3>
+          <p>Cobertura pra você e seus dependentes dentro de um único contrato.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">PME</span>
+          <h3>Plano empresarial</h3>
+          <p>Pra pequenas e médias empresas que querem oferecer saúde ao time.</p>
+        </div>
+        <div class="plan-card">
+          <span class="tag">Adesão</span>
+          <h3>Plano por adesão</h3>
+          <p>Contratado através de sindicatos e associações, com condições próprias.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="categories" id="planos">
-    <div class="container">
-      <div class="section-kicker">Planos</div>
-      <h2 class="section-title">Uma corretora para diferentes momentos</h2>
-      <p class="section-subtitle">Seja qual for o seu perfil, temos a solução ideal para você.</p>
-
-      <div class="category-grid">
-        <article class="category">
-          <div class="category-icon">♙</div>
-          <h3>Individual</h3>
-          <p>Plano para você. Mais saúde e tranquilidade no seu dia a dia.</p>
-          <a class="category-link" href="#contato">Conhecer opções →</a>
-        </article>
-        <article class="category">
-          <div class="category-icon">♧</div>
-          <h3>Família</h3>
-          <p>Proteção para quem você ama, em todas as fases da vida.</p>
-          <a class="category-link" href="#contato">Conhecer opções →</a>
-        </article>
-        <article class="category" id="empresas">
-          <div class="category-icon">▥</div>
-          <h3>Empresarial</h3>
-          <p>Planos de saúde para sua equipe, mais produtividade e bem-estar.</p>
-          <a class="category-link" href="#contato">Conhecer opções →</a>
-        </article>
-        <article class="category">
-          <div class="category-icon">♙</div>
-          <h3>Adesão</h3>
-          <p>Planos por sindicatos, associações e entidades de classe.</p>
-          <a class="category-link" href="#contato">Conhecer opções →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="how" id="como-funciona">
-    <div class="container how-layout">
-      <div class="how-lead">
-        <div class="section-kicker">Como funciona</div>
-        <h2 class="section-title">Você não precisa entender de plano. A gente entende.</h2>
-        <p class="section-subtitle">Cuidamos de todo o processo para você. É simples, rápido e sem pressão.</p>
-        <a class="gold-btn" href="#contato">Falar com um especialista</a>
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Como funciona a partir daqui</h2>
       </div>
 
       <div class="steps">
-        <article class="step">
-          <div class="step-number">01</div>
-          <div class="step-icon">▱</div>
-          <h3>Você conta o que precisa</h3>
-          <p>Idade, cidade, família, empresa, orçamento e o que procura.</p>
-        </article>
-        <article class="step">
-          <div class="step-number">02</div>
-          <div class="step-icon">⌕</div>
-          <h3>A gente pesquisa</h3>
-          <p>Comparamos as opções disponíveis para o seu perfil.</p>
-        </article>
-        <article class="step">
-          <div class="step-number">03</div>
-          <div class="step-icon">▤</div>
-          <h3>Você entende</h3>
-          <p>Explicamos rede, cobertura, carência, regras e diferenças.</p>
-        </article>
-        <article class="step">
-          <div class="step-number">04</div>
-          <div class="step-icon">♢</div>
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Você chama</h3>
+          <p>Manda mensagem por DM ou WhatsApp contando sua situação.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>A gente entende</h3>
+          <p>Levantamos idade, dependentes, região e o que já tentaram antes.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Você compara</h3>
+          <p>Apresento as opções que fazem sentido, com cobertura explicada em detalhe.</p>
+        </div>
+        <div class="step">
+          <section class="cta-final" style="background-image: url('Lobby corporativo com logo dourado.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
           <h3>Você decide</h3>
-          <p>Sem pressão. Só avançamos quando fizer sentido para você.</p>
-        </article>
+          <p>Sem pressão. Fechamos quando estiver claro pra você, não antes.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="dark-section">
-    <div class="container dark-grid">
-      <div class="dark-copy">
-        <div class="section-kicker">Por que fazer com a Fizemos$</div>
-        <h2 class="section-title">Mais do que vender um plano. A gente cuida da escolha.</h2>
-        <p>Nossa experiência no mercado de seguros, saúde e consórcios nos permite encontrar as melhores opções para o seu perfil, com clareza, segurança e atendimento próximo.</p>
-        <a class="gold-btn" href="#sobre">Conheça a FIZEMOS$ &nbsp; →</a>
-      </div>
-
-      <div class="benefits">
-        <article class="benefit">
-          <div class="benefit-icon">♢</div>
-          <h3>Clareza antes da contratação</h3>
-          <p>Você sabe o que está contratando antes de fechar.</p>
-        </article>
-        <article class="benefit">
-          <div class="benefit-icon">♎</div>
-          <h3>Comparação de verdade</h3>
-          <p>Apresentamos alternativas, não apenas um produto.</p>
-        </article>
-        <article class="benefit">
-          <div class="benefit-icon">♙</div>
-          <h3>Atendimento próximo</h3>
-          <p>Você fala com pessoas, não fica perdido em canais automáticos.</p>
-        </article>
-        <article class="benefit">
-          <div class="benefit-icon">♧</div>
-          <h3>Pós-venda</h3>
-          <p>Nosso trabalho não termina depois da assinatura.</p>
-        </article>
-      </div>
-
-      <div class="dark-image">
-        <img src="assets/lobby.png" alt="Ambiente corporativo Fizemos$">
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <h2>Vamos conversar sobre o plano certo pra sua família e empresa?</h2>
+      <p>Sem formulário, sem letra miúda. É uma conversa direta comigo, pelo WhatsApp ou por DM.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <section class="profiles">
-    <div class="container profile-layout">
-      <div>
-        <div class="section-kicker">Plano de saúde</div>
-        <h2 class="section-title">O que você está procurando?</h2>
-        <p class="section-subtitle">Escolha o seu perfil e veja as melhores opções disponíveis.</p>
-      </div>
-
-      <div class="profile-grid">
-        <a class="profile-card" href="#contato">
-          <img class="profile-bg" src="assets/lobby.png" alt="">
-          <div class="profile-content">
-            <h3>Minha família</h3>
-            <p>Quero encontrar um plano de saúde para mim e meus dependentes.</p>
-            <span class="circle-arrow">→</span>
-          </div>
-        </a>
-        <a class="profile-card" href="#contato">
-          <img class="profile-bg" src="assets/lobby.png" alt="">
-          <div class="profile-content">
-            <h3>Minha empresa</h3>
-            <p>Quero oferecer plano de saúde para meus colaboradores.</p>
-            <span class="circle-arrow">→</span>
-          </div>
-        </a>
-        <a class="profile-card" href="#contato">
-          <img class="profile-bg" src="assets/lobby.png" alt="">
-          <div class="profile-content">
-            <h3>Só eu</h3>
-            <p>Quero contratar um plano individual.</p>
-            <span class="circle-arrow">→</span>
-          </div>
-        </a>
-        <a class="profile-card" href="#contato">
-          <img class="profile-bg" src="assets/lobby.png" alt="">
-          <div class="profile-content">
-            <h3>Quero trocar de plano</h3>
-            <p>Já tenho plano e quero avaliar alternativas.</p>
-            <span class="circle-arrow">→</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="about" id="sobre">
-    <div class="container about-grid">
-      <div class="about-copy">
-        <div class="section-kicker">Sobre a FIZEMOS$</div>
-        <h2 class="section-title">Experiência de quem conhece o mercado por dentro.</h2>
-        <p>Nossa experiência começou dentro do mercado de seguros, saúde e consórcios. Hoje usamos esse conhecimento para ajudar você a comparar opções e tomar decisões com mais segurança.</p>
-        <a class="gold-btn" href="#contato">Conheça a FIZEMOS$ &nbsp; →</a>
-      </div>
-      <div class="about-image">
-        <img src="assets/lobby.png" alt="Lobby corporativo da FIZEMOS$">
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials">
-    <div class="container testimonial-layout">
-      <div>
-        <div class="section-kicker">Depoimentos</div>
-        <h2 class="section-title">Quem já vive a experiência FIZEMOS$ recomenda.</h2>
-      </div>
-      <div class="quote-grid">
-        <article class="quote">
-          <p>“A FIZEMOS me ajudou a encontrar o melhor plano para minha família. Foi tudo muito claro e rápido!”</p>
-          <div class="person"><div class="avatar">JS</div><div><strong>Juliana Silva</strong><span>Plano familiar</span></div></div>
-        </article>
-        <article class="quote">
-          <p>“Atendimento excelente! Explicaram cada detalhe e me ajudaram a seguir com segurança.”</p>
-          <div class="person"><div class="avatar">CM</div><div><strong>Carlos Mendes</strong><span>Plano individual</span></div></div>
-        </article>
-        <article class="quote">
-          <p>“Contratamos o plano empresarial e o suporte é incrível. Sempre que precisamos, eles estão lá.”</p>
-          <div class="person"><div class="avatar">PL</div><div><strong>Patricia Lima</strong><span>Plano empresarial</span></div></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq">
-    <div class="container faq-layout">
-      <div>
-        <div class="section-kicker">Tire suas dúvidas</div>
-        <h2 class="section-title">Ainda tem dúvidas?</h2>
-        <p class="section-subtitle">Veja as perguntas mais frequentes ou fale com a nossa equipe.</p>
-        <a class="outline-btn" style="border-color:#bda86f;color:#76570b;margin-top:22px" href="#contato">Ver todas as perguntas →</a>
-      </div>
-
-      <div class="faq-list">
-        <details><summary>Qual plano é melhor para mim?</summary><p>Não existe um plano melhor para todo mundo. A escolha depende do seu perfil, região, necessidades e orçamento.</p></details>
-        <details><summary>Vocês trabalham com quais operadoras?</summary><p>Falamos sobre as opções disponíveis para o seu perfil durante a análise.</p></details>
-        <details><summary>Posso trocar de plano?</summary><p>Sim. Avaliamos sua situação atual e mostramos alternativas que podem fazer sentido.</p></details>
-        <details><summary>É possível aproveitar carência?</summary><p>Em alguns cenários existem regras específicas. Nossa equipe explica as condições antes da contratação.</p></details>
-        <details><summary>Vocês atendem empresas?</summary><p>Sim. Temos soluções para pequenas e médias empresas e seus colaboradores.</p></details>
-        <details><summary>Depois da contratação continuo falando com vocês?</summary><p>Sim. O atendimento não termina na contratação; nossa proposta inclui acompanhamento.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="final-cta" id="contato">
-    <div class="container cta-layout">
-      <div>
-        <div class="section-kicker">Vamos conversar?</div>
-        <h2 class="section-title">Você não precisa decidir sozinho.</h2>
-        <p>Fale com um especialista e encontre a melhor opção para o seu momento.</p>
-        <a class="gold-btn" id="whatsappCta" href="#" target="_blank" rel="noopener">◉ &nbsp; Falar com um especialista</a>
-      </div>
-      <div class="cta-brand">
-        <img src="assets/logo.jpg" alt="Fizemos$">
-        <span>Fizemos<span style="color:var(--gold-light)">$</span></span>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
-  <div class="container footer-row">
-    <div class="footer-brand">
-      <img src="assets/logo.jpg" alt="Fizemos$">
-      <div>Fizemos$<small>Corretora de Seguros, Saúde e Consórcios</small></div>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
+        <span>Corretora Fizemo$</span>
+      </div>
+      <span>corretorafizemos.com</span>
     </div>
-    <div class="footer-links">
-      <a href="#inicio">Início</a>
-      <a href="#planos">Planos</a>
-      <a href="#empresas">Para empresas</a>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#sobre">Sobre nós</a>
-      <a href="#contato">Contato</a>
-    </div>
-    <div class="copyright">© 2026 FIZEMOS$. Todos os direitos reservados.</div>
+    <p class="footer-note">Um projeto que também nasceu do canal <a href="https://www.youtube.com/@canalfizemos" target="_blank" rel="noopener">Fizemo$</a>.</p>
   </div>
 </footer>
 
-<a class="floating" id="floatingWhatsapp" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">◉</a>
-
 <script>
-  /*
-    IMPORTANTE:
-    Troque apenas o número abaixo pelo WhatsApp da FIZEMOS.
-    Formato: código do país + DDD + número, sem espaços, parênteses ou traços.
-    Exemplo: 5511999999999
-  */
-  const WHATSAPP_NUMBER = "SEUNUMERO";
-
-  const message = encodeURIComponent(
-    "Olá! Conheci a FIZEMOS$ pelo site e gostaria de falar com um especialista."
-  );
-
-  const whatsappUrl = WHATSAPP_NUMBER === "SEUNUMERO"
-    ? "#contato"
-    : `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-
-  document.getElementById("whatsappCta").href = whatsappUrl;
-  document.getElementById("floatingWhatsapp").href = whatsappUrl;
-
-  // Menu mobile
-  const style = document.createElement("style");
-  style.textContent = `
-    @media(max-width:760px){
-      .menu.open{
-        display:flex;
-        position:absolute;
-        top:68px;left:0;right:0;
-        padding:20px 24px;
-        flex-direction:column;
-        align-items:flex-start;
-        background:#12120f;
-        border-top:1px solid rgba(255,255,255,.1);
-        box-shadow:0 15px 30px rgba(0,0,0,.25);
-      }
-    }
-  `;
-  document.head.appendChild(style);
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
 </script>
+
 </body>
 </html>
