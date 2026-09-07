@@ -351,15 +351,19 @@
 
   /* ---------- CTA FINAL ---------- */
   .cta-final{
-    background: var(--gold-bright);
-    color: var(--ink);
+    position: relative;
+    background-color: var(--ink);
+    background-image: linear-gradient(180deg, rgba(13,12,10,0.6), rgba(13,12,10,0.82)), url('Lobby_corporativo_com_logo_dourado.png');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
     text-align: left;
   }
-  .cta-final h2{ color: var(--ink); font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 20ch; }
-  .cta-final p{ color: #4A3A12; margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
+  .cta-final h2{ color: #FFFFFF; font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 22ch; }
+  .cta-final p{ color: rgba(255,255,255,0.82); margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
   .cta-final .hero-ctas{ margin-top: 2rem; }
-  .cta-final .btn-primary{ background: var(--ink); color: #FFFFFF; }
-  .cta-final .btn-primary:hover{ background: #3A3226; }
+  .cta-final .btn-primary{ background: var(--gold-bright); color: var(--ink); }
+  .cta-final .btn-primary:hover{ background: #FFFFFF; }
 
   /* ---------- FOOTER ---------- */
   footer{ padding-block: 2.5rem; border-top: 1px solid var(--gold-line-soft); }
@@ -553,7 +557,7 @@
   <!-- CTA FINAL -->
   <section class="cta-final">
     <div class="wrap">
-      <h2>Vamos conversar sobre o plano certo pra sua família?</h2>
+      <h2>Vamos conversar sobre o plano certo pra sua família e empresa?</h2>
       <p>Sem formulário, sem letra miúda. É uma conversa direta comigo, pelo WhatsApp ou por DM.</p>
       <div class="hero-ctas">
         <a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
