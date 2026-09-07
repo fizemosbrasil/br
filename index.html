@@ -4,22 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fizemos Corretora de Seguros | Planos de Saúde</title>
-<meta name="description" content="Corretora de planos de saúde transparente: quem protegeu a obra, também protege a saúde da sua família. Fale com a Fizemos.">
+<meta name="description" content="Corretora de seguros e consórcios com transparência: confiança e segurança para você decidir com clareza.">
 <link rel="icon" href="Logo.jpeg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Corretora Fizemos">
+<meta property="og:description" content="Seguros e consórcios com transparência, confiança e segurança para você decidir com clareza.">
+<meta property="og:image" content="https://corretorafizemos.com/Logo.jpeg">
+<meta property="og:url" content="https://corretorafizemos.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0D0C0A;
-    --bg-band: #151210;
-    --panel: #1B1712;
-    --ink: #F2ECDD;
-    --ink-soft: #B4A67F;
-    --gold: #D8AC44;
-    --gold-bright: #ECC66B;
-    --gold-line: rgba(216, 172, 68, 0.28);
-    --gold-line-soft: rgba(216, 172, 68, 0.14);
+    --bg: #FFFFFF;
+    --bg-band: #F6F3EC;
+    --panel: #FBFAF6;
+    --ink: #1D1912;
+    --ink-soft: #5A5142;
+    --gold: #96700A;
+    --gold-bright: #C99A3B;
+    --gold-deep: #6E5108;
+    --gold-line: rgba(150, 112, 10, 0.32);
+    --gold-line-soft: rgba(150, 112, 10, 0.14);
     --max: 1120px;
     --gap: clamp(1.25rem, 3vw, 2.5rem);
   }
@@ -70,7 +76,7 @@
     position: sticky;
     top: 0;
     z-index: 40;
-    background: rgba(13, 12, 10, 0.88);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--gold-line-soft);
   }
@@ -142,16 +148,16 @@
   }
 
   .btn-primary{
-    background: var(--gold);
-    color: var(--bg);
+    background: var(--ink);
+    color: #FFFFFF;
   }
-  .btn-primary:hover{ background: var(--gold-bright); }
+  .btn-primary:hover{ background: var(--gold-deep); }
 
   .btn-ghost{
-    border-color: var(--ink-soft);
+    border-color: var(--gold-line);
     color: var(--ink);
   }
-  .btn-ghost:hover{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn-ghost:hover{ background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
 
   .nav-toggle{
     display: none;
@@ -171,16 +177,6 @@
     padding-block: clamp(3rem, 8vw, 6rem);
     overflow: hidden;
   }
-  .hero::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(0deg, var(--gold-line-soft) 0 1px, transparent 1px 48px),
-      repeating-linear-gradient(90deg, var(--gold-line-soft) 0 1px, transparent 1px 48px);
-    pointer-events: none;
-  }
-
   .corner{
     position: absolute;
     width: 22px;
@@ -197,25 +193,6 @@
     z-index: 1;
   }
 
-  .titleblock{
-    display: inline-grid;
-    grid-auto-flow: column;
-    gap: 1.5rem;
-    background: var(--panel);
-    border: 1px solid var(--gold-line);
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 2.25rem;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-  .titleblock div{ display: flex; flex-direction: column; gap: 0.15rem; }
-  .titleblock .tb-key{
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--ink-soft);
-  }
-  .titleblock .tb-val{ font-size: 0.85rem; font-weight: 600; color: var(--gold-bright); }
-
   .hero h1{
     font-size: clamp(2.1rem, 5vw, 3.4rem);
     max-width: 15ch;
@@ -225,7 +202,7 @@
 
   .hero-sub{
     margin-top: 1.5rem;
-    max-width: 46ch;
+    max-width: 50ch;
     font-size: 1.1rem;
     color: var(--ink-soft);
   }
@@ -289,6 +266,8 @@
     align-items: center;
   }
 
+  .why-grid h2{ font-size: clamp(1.5rem, 3vw, 2rem); max-width: 22ch; }
+
   .why-photo{
     border: 1px solid var(--gold-line);
     background: var(--panel);
@@ -298,7 +277,7 @@
 
   .why-list{
     list-style: none;
-    margin: 1.5rem 0 0;
+    margin: 1.75rem 0 0;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -316,7 +295,7 @@
     border-radius: 50%;
     background: var(--gold-line-soft);
     border: 1px solid var(--gold-line);
-    color: var(--gold-bright);
+    color: var(--gold);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -370,41 +349,17 @@
   .step h3{ font-size: 1.02rem; margin-top: 0.4rem; }
   .step p{ color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.35rem; }
 
-  /* ---------- PONTE OBRA / SAUDE ---------- */
-  .bridge{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid var(--gold-line);
-  }
-  .bridge > div{
-    padding: clamp(1.75rem, 4vw, 2.75rem);
-    background: var(--panel);
-  }
-  .bridge .saude{
-    background: linear-gradient(var(--gold-line-soft), var(--gold-line-soft)), var(--panel);
-    border-left: 1px solid var(--gold-line);
-  }
-  .bridge h3{ font-size: 1.2rem; margin-bottom: 0.6rem; color: var(--gold-bright); }
-  .bridge p{ color: var(--ink-soft); font-size: 0.95rem; }
-  .bridge-note{
-    margin-top: 1.75rem;
-    font-size: 1rem;
-    color: var(--ink-soft);
-    max-width: 68ch;
-  }
-  .bridge-note a{ color: var(--gold-bright); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-
   /* ---------- CTA FINAL ---------- */
   .cta-final{
-    background: var(--gold);
-    color: var(--bg);
+    background: var(--gold-bright);
+    color: var(--ink);
     text-align: left;
   }
-  .cta-final h2{ color: var(--bg); font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 20ch; }
-  .cta-final p{ color: #3A2E0F; margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
+  .cta-final h2{ color: var(--ink); font-size: clamp(1.7rem, 3.6vw, 2.4rem); max-width: 20ch; }
+  .cta-final p{ color: #4A3A12; margin-top: 0.9rem; max-width: 50ch; font-size: 1.05rem; }
   .cta-final .hero-ctas{ margin-top: 2rem; }
-  .cta-final .btn-primary{ background: var(--bg); color: var(--gold-bright); }
-  .cta-final .btn-primary:hover{ background: #211D18; }
+  .cta-final .btn-primary{ background: var(--ink); color: #FFFFFF; }
+  .cta-final .btn-primary:hover{ background: #3A3226; }
 
   /* ---------- FOOTER ---------- */
   footer{ padding-block: 2.5rem; border-top: 1px solid var(--gold-line-soft); }
@@ -419,14 +374,18 @@
   }
   .footer-brand{ display: flex; align-items: center; gap: 0.6rem; }
   .footer-brand img{ height: 28px; width: 28px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold-line); }
+  .footer-note{
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .footer-note a{ color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
     .why-grid{ grid-template-columns: 1fr; }
     .why-photo{ order: -1; max-width: 360px; }
     .steps{ grid-template-columns: repeat(2, 1fr); }
-    .bridge{ grid-template-columns: 1fr; }
-    .bridge .saude{ border-left: none; border-top: 1px solid var(--gold-line); }
   }
 
   @media (max-width: 680px){
@@ -447,7 +406,6 @@
     .nav-links .btn{ width: 100%; justify-content: center; }
     .nav-toggle{ display: inline-flex; }
     .steps{ grid-template-columns: 1fr; }
-    .titleblock{ grid-auto-flow: row; gap: 0.6rem; }
   }
 </style>
 </head>
@@ -462,9 +420,8 @@
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#planos">Planos</a></li>
-      <li><a href="#como-funciona">Como funciona</a></li>
-      <li><a href="#obra-saude">Obra &amp; saúde</a></li>
-      <li><a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
+      <li><a href="#como-funciona">Sobre nós</a></li>
+      <li><a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a></li>
     </ul>
   </div>
 </header>
@@ -478,14 +435,8 @@
     <span class="corner bl"></span>
     <span class="corner br"></span>
     <div class="wrap hero-inner">
-      <div class="titleblock">
-        <div><span class="tb-key">Obra</span><span class="tb-val">Sua saúde</span></div>
-        <div><span class="tb-key">Responsável</span><span class="tb-val">Você e sua família</span></div>
-        <div><span class="tb-key">Validade</span><span class="tb-val">Sem data pra vencer</span></div>
-      </div>
-
       <h1>Você protegeu a obra. E a sua saúde?</h1>
-      <p class="hero-sub">A Fizemos nasceu entre plantas, medidas e reformas — e hoje cuida de outro tipo de estrutura: a da sua família. Somos corretora de planos de saúde e explicamos exatamente o que está e o que não está coberto, antes de você assinar qualquer coisa.</p>
+      <p class="hero-sub">A Fizemos Corretora nasceu da nossa experiência no mercado de seguros e consórcios, com um propósito simples: oferecer aos nossos clientes algo que vai muito além de um produto — confiança, transparência e segurança para tomar as melhores decisões.</p>
 
       <div class="dimension">
         <span class="tick">|</span>
@@ -496,7 +447,7 @@
       </div>
 
       <div class="hero-ctas">
-        <a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Falar no WhatsApp</a>
         <a href="#planos" class="btn btn-ghost">Ver tipos de plano</a>
       </div>
     </div>
@@ -506,13 +457,12 @@
   <section id="por-que">
     <div class="wrap why-grid">
       <div>
-        <h2>Antes de vender plano de saúde, eu trabalhei dentro de uma operadora</h2>
-        <p style="margin-top:1.1rem; color:var(--ink-soft); font-size:1.05rem;">Foi ali que vi de perto como contratos mal explicados viram dor de cabeça na hora em que a família mais precisa. A Fizemos existe pra fazer diferente: menos letra miúda, mais conversa direta sobre o que cada plano cobre de verdade.</p>
+        <h2>Antes de vender plano de saúde, nós trabalhamos dentro de três das maiores operadoras do ramo de seguros e consórcio do Brasil.</h2>
 
         <ul class="why-list">
           <li>
             <span class="mark">1</span>
-            <div><strong>Experiência do outro lado do balcão</strong><span>Já fui operador(a) de plano de saúde antes de virar corretor(a) — conheço os bastidores.</span></div>
+            <div><strong>Garantimos a segurança e a tranquilidade</strong><span>que você precisa para contratar seu seguro ou consórcio sem surpresas no futuro.</span></div>
           </li>
           <li>
             <span class="mark">2</span>
@@ -520,7 +470,11 @@
           </li>
           <li>
             <span class="mark">3</span>
-            <div><strong>Atendimento direto, sem robô</strong><span>Fala comigo por DM ou WhatsApp, do primeiro contato até o pós-venda.</span></div>
+            <div><strong>Atendimento direto, sem robô</strong><span>Fala comigo por WhatsApp, do primeiro contato até o pós-venda.</span></div>
+          </li>
+          <li>
+            <span class="mark">4</span>
+            <div><strong>Atendimento exclusivo</strong><span>com influência para sua empresa.</span></div>
           </li>
         </ul>
       </div>
@@ -596,35 +550,13 @@
     </div>
   </section>
 
-  <!-- OBRA X SAUDE -->
-  <section id="obra-saude" class="band">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>O mesmo cuidado que você teve com a obra</h2>
-      </div>
-
-      <div class="bridge">
-        <div class="obra">
-          <h3>Na reforma</h3>
-          <p>Medir antes de cortar. Conferir o orçamento linha por linha. Não assinar nada sem entender o que está incluso.</p>
-        </div>
-        <div class="saude">
-          <h3>Na saúde</h3>
-          <p>Entender a carência antes de contratar. Saber exatamente o que o plano cobre. Não assinar nada sem entender o que está incluso.</p>
-        </div>
-      </div>
-
-      <p class="bridge-note">Esse jeito de fazer as coisas vem lá do canal <a href="#" rel="noopener">Fizemo$</a>, onde a gente já mostra obra e reforma sendo tocadas sem enrolação. A corretora nasceu da mesma lógica: se você protege o que construiu, faz sentido proteger quem mora dentro.</p>
-    </div>
-  </section>
-
   <!-- CTA FINAL -->
   <section class="cta-final">
     <div class="wrap">
       <h2>Vamos conversar sobre o plano certo pra sua família?</h2>
       <p>Sem formulário, sem letra miúda. É uma conversa direta comigo, pelo WhatsApp ou por DM.</p>
       <div class="hero-ctas">
-        <a href="https://wa.me/5511913976197" class="btn btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <a href="https://wa.me/message/OJDDTDB5ZPWWL1" class="btn btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
     </div>
   </section>
@@ -632,12 +564,15 @@
 </main>
 
 <footer>
-  <div class="wrap footer-row">
-    <div class="footer-brand">
-      <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
-      <span>Corretora Fizemo$</span>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="Logo.jpeg" alt="Logo Corretora Fizemos">
+        <span>Corretora Fizemo$</span>
+      </div>
+      <span>corretorafizemos.com</span>
     </div>
-    <span>corretorafizemos.com</span>
+    <p class="footer-note">Um projeto que também nasceu do canal <a href="#" rel="noopener">Fizemo$</a>.</p>
   </div>
 </footer>
 
